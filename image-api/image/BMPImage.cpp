@@ -1,20 +1,22 @@
-#include "Image.h"
+#include "Image.hpp"
 
-class BMPImage : public Image {
-public:
-    Image* Encrypt() override {
-        return {};
-    }
+namespace Folly {
+    class BMPImage : public Image {
+    public:
+        Image* Encrypt() override {
+            return {};
+        }
 
-    Image* Decrypt() override {
-        return {};
-    }
+        Image* Decrypt() override {
+            return {};
+        }
 
-    void Save() override {
+        void Save() override {
 
-    }
+        }
 
-    void Load() override {
+        void Load() override {
 
-    }
-};
+        }
+    };
+}

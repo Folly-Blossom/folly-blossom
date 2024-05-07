@@ -1,4 +1,5 @@
+#include "Loader.hpp"
 
+namespace Folly {
 
-
-#include "Loader.h"
+}

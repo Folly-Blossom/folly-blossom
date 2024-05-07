@@ -1,2 +1,5 @@
-#include "Image.h"
+#include "Image.hpp"
 
+namespace Folly {
+
+}

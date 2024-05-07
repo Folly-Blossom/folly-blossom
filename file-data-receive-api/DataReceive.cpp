@@ -1,19 +1,21 @@
-#include "../data-api/Data.h"
-#include "../data-api/FileData.h"
+#include "../data-api/Data.hpp"
+#include "../data-api/FileData.hpp"
 
-class DataReceive {
-public:
-    explicit DataReceive(Data *receive) {
-        receive = data;
-    }
+namespace Folly {
+    class DataReceive {
+    public:
+        explicit DataReceive(Data *receive) {
+            receive = data;
+        }
 
-    ~DataReceive() {
-        delete data;
-    }
+        ~DataReceive() {
+            delete data;
+        }
 
 
-private:
-    Data *data{};
+    private:
+        Data *data{};
 
-    FileData fileData;
-};
+        FileData fileData;
+    };
+}

@@ -1,10 +1,12 @@
-#ifndef FOLLY_BLOSSOM_IMAGE_H
-#define FOLLY_BLOSSOM_IMAGE_H
+#ifndef FOLLY_BLOSSOM_IMAGE_HPP
+#define FOLLY_BLOSSOM_IMAGE_HPP
 
-#include "../Data.h"
+#include "../Data.hpp"
 
-class ImageAPI : public Data {
+namespace Folly {
+    class ImageAPI : public Data {
 
-};
+    };
+}
 
-#endif //FOLLY_BLOSSOM_IMAGE_H
+#endif //FOLLY_BLOSSOM_IMAGE_HPP

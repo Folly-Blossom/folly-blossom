@@ -1,25 +1,27 @@
-#ifndef FOLLY_BLOSSOM_IMAGE_H
+#ifndef FOLLY_BLOSSOM_IMAGE_HPP
 #define FOLLY_BLOSSOM_IMAGE_H
 
 #include <string>
 
-#include "../../file-api/File.h"
+#include "../../file-api/File.hpp"
 
-struct BaseImage {
-    static File *file;
-};
+namespace Folly {
+    struct BaseImage {
+        static File *file;
+    };
 
-class Image {
-public:
-    virtual Image* Encrypt() = 0;
+    class Image {
+    public:
+        virtual Image* Encrypt() = 0;
 
-    virtual Image* Decrypt() = 0;
+        virtual Image* Decrypt() = 0;
 
-    virtual void Save() = 0;
+        virtual void Save() = 0;
 
-    virtual void Load() = 0;
+        virtual void Load() = 0;
 
-    BaseImage image;
-};
+        BaseImage image;
+    };
+}
 
-#endif /*FOLLY_BLOSSOM_IMAGE_H*/
+#endif /*FOLLY_BLOSSOM_IMAGE_HPP*/

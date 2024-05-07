@@ -1,20 +1,22 @@
-#ifndef FOLLY_BLOSSOM_LOADER_H
-#define FOLLY_BLOSSOM_LOADER_H
+#ifndef FOLLY_BLOSSOM_LOADER_HPP
+#define FOLLY_BLOSSOM_LOADER_HPP
 
-#include "../data-api/Data.h"
+#include "../data-api/Data.hpp"
 
-class LoaderAPI : public Data {
-public:
-    LoaderAPI(File *load, FileData data) {
-        file = load;
+namespace Folly {
+    class LoaderAPI : public Data {
+    public:
+        LoaderAPI(File *load, FileData data) {
+            file = load;
 
-        fileData = data;
-    }
+            fileData = data;
+        }
 
-private:
-    File *file;
+    private:
+        File *file;
 
-    FileData fileData {};
-};
+        FileData fileData {};
+    };
+}
 
-#endif /*FOLLY_BLOSSOM_LOADER_H*/
+#endif /*FOLLY_BLOSSOM_LOADER_HPP*/

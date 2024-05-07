@@ -1,10 +1,12 @@
-#ifndef FOLLY_BLOSSOM_TEXT_H
-#define FOLLY_BLOSSOM_TEXT_H
+#ifndef FOLLY_BLOSSOM_TEXT_HPP
+#define FOLLY_BLOSSOM_TEXT_HPP
 
-#include "../Data.h"
+#include "../Data.hpp"
 
-class TextAPI : public Data {
+namespace Folly {
+    class TextAPI : public Data {
 
-};
+    };
+}
 
-#endif //FOLLY_BLOSSOM_TEXT_H
+#endif //FOLLY_BLOSSOM_TEXT_HPP

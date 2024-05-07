@@ -1,10 +1,12 @@
-#ifndef FOLLY_BLOSSOM_VIDEO_H
-#define FOLLY_BLOSSOM_VIDEO_H
+#ifndef FOLLY_BLOSSOM_VIDEO_HPP
+#define FOLLY_BLOSSOM_VIDEO_HPP
 
-#include "../Data.h"
+#include "../Data.hpp"
 
-class VideoAPI : public Data {
+namespace Folly {
+    class VideoAPI : public Data {
 
-};
+    };
+}
 
-#endif //FOLLY_BLOSSOM_VIDEO_H
+#endif //FOLLY_BLOSSOM_VIDEO_HPP

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "../loader-api/Loader.hpp"
 
 int main() {
     std::cout << "[*] Please specify a file name.";
