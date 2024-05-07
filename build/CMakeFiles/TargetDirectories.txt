@@ -1,3 +1,0 @@
-/Volumes/Development/Folly Blossom/build/CMakeFiles/Folly_Blossom.dir
-/Volumes/Development/Folly Blossom/build/CMakeFiles/edit_cache.dir
-/Volumes/Development/Folly Blossom/build/CMakeFiles/rebuild_cache.dir
