@@ -6,14 +6,12 @@
 #include "../data/FileData.hpp"
 #include <vector>
 
-namespace Folly {
-    struct File {
-        typedef std::string String;
+typedef std::string String;
 
-        String fileName;
-        String filePath;
-        String absoluteFilePath;
-        struct FileData fileData;
+namespace Folly {
+    enum FileType {
+        LOCKED,
+        UNLOCKED
     };
 
     enum State {
@@ -23,6 +21,20 @@ namespace Folly {
         EMPTY,
         NON_EXISTENT,
         FULL
+    };
+
+    typedef struct FileOptions {
+        String extention;
+        FileType fileType;
+        unsigned char permissions[2];
+    } Options;
+
+    struct File {
+        String fileName;
+        String filePath;
+        String absoluteFilePath;
+        struct FileData fileData;
+        Options options;
     };
 
     namespace {

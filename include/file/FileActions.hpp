@@ -17,7 +17,7 @@ namespace Folly {
 
         String *contents{};
 
-        fileStream.read(reinterpret_cast<char*>(contents), sizeof contents); // NOLINT(*-sizeof-expression)
+        fileStream.read(reinterpret_cast<char*>(contents), sizeof(contents));
 
         fileStream.close();
 
