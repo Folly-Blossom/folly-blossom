@@ -1,0 +1,2 @@
+/Volumes/Development/Folly Blossom/encryption/build/CMakeFiles/edit_cache.dir
+/Volumes/Development/Folly Blossom/encryption/build/CMakeFiles/rebuild_cache.dir

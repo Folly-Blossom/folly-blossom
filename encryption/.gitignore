@@ -1,0 +1,13 @@
+/.idea
+
+/cmake-build-debug
+
+/cmake-build-debug-event-trace
+
+/build
+
+/eclipse
+
+/.vscode
+
+/.DS_Store
