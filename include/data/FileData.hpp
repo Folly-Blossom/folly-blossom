@@ -1,5 +1,3 @@
-#include "../file/File.hpp"
-
 #ifndef FOLLY_BLOSSOM_FILEDATA_H
 #define FOLLY_BLOSSOM_FILEDATA_H
 
