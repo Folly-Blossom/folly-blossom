@@ -1,29 +1,36 @@
 cmake_minimum_required(VERSION 3.28)
-project(Folly_Blossom)
+
+project(Folly_Blossom VERSION 1.0.0 LANGUAGES CXX)
+
+include(GNUInstallDircs)
+
+add_library(${PROJECT_NAME} INTERFACE)
 
 set(CMAKE_CXX_STANDARD 14)
 
+target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_14)
 
-
-add_executable(
-        Folly_Blossom
-        image-api/image/Image.hpp
-        image-api/image/JPGImage.cpp
-        file-api/File.hpp
-        image-api/image/PNGImage.cpp
-        src/Run.cpp
-        image-api/image/BMPImage.cpp
-        data-api/Data.cpp
-        data-api/Data.hpp
-        data-api/image/Image.cpp
-        data-api/image/Image.hpp
-        data-api/text/Text.cpp
-        data-api/text/Text.hpp
-        data-api/video/Video.cpp
-        data-api/video/Video.hpp
-        file-data-receive-api/DataReceive.cpp
-        data-api/FileData.hpp
-        loader-api/Loader.cpp
-        loader-api/Loader.hpp
-        file-api/FileActions.hpp
+target_include_directories(
+        ${PROJECT_NAME}
+        INTERFACE
+        $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
+
+# Include Catch2 for tests.
+
+find_package(Catch2 REQUIRED)
+
+add_executable(Folly_Blossom_Test test/test.cpp)
+
+target_link_libraries(Folly_Blossom_Test PRIVATE Catch2::Catch2)
+
+target_include_directories(Folly_Blossom_Test PRIVATE ${PROJECT_SOURCE_DIR}/include)
+
+include(CTest)
+
+include(Catch)
+
+catch_discover_tests(Folly_Blossom_Test)
+
+enable_testing()
