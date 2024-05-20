@@ -1,14 +1,8 @@
-#pragma clang diagnostic push
-
-#pragma ide diagnostic ignored "bugprone-sizeof-expression"
-#pragma ide diagnostic ignored "UnreachableCallsOfFunction"
-#pragma ide diagnostic ignored "misc-no-recursion"
-
 #ifndef FOLLY_BLOSSOM_PIXEL_HPP
 #define FOLLY_BLOSSOM_PIXEL_HPP
 
 #include <cstdint>
-#include <vector>
+#include <utility>
 
 namespace Folly {
     struct RGBColor {
@@ -106,8 +100,7 @@ namespace Folly {
 
             heap -> capacity = capacity;
 
-            heap -> nodes = reinterpret_cast<HeapNode**>((malloc(
-                    sizeof(heap->capacity * sizeof(HeapNode)))));
+            heap -> nodes = (malloc(sizeof(heap -> capacity));
 
             return heap;
         }
@@ -242,5 +235,3 @@ namespace Folly {
 }
 
 #endif /*FOLLY_BLOSSOM_PIXEL_HPP*/
-
-#pragma clang diagnostic pop

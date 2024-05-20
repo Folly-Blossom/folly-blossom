@@ -26,6 +26,10 @@ namespace Folly {
         };
 
     private:
+        /**
+         * The percise and exact size of the list, used to determine the number of physical objects within the list.
+         * This allows an easier way to allocate memory. However, doing this does NOT interupt loops in any way.
+         */
         unsigned int allocatedMemoryFromHeap {};
 
         bool SubstractAllocatedFromSize(Map<K, V> map, const int *allocatedMemory) {
@@ -71,7 +75,7 @@ namespace Folly {
             return map;
         }
 
-        Map<K, V>* CreateMap(K **keys, V **values, bool allocateMemory) {
+        std::unique_ptr<Map<K, V>> CreateMap(K **keys, V **values, bool allocateMemory) {
             Map<K, V> map = CreateMap();
 
             if (allocateMemory) {
@@ -96,7 +100,7 @@ namespace Folly {
             return map;
         }
 
-        Map<K, V>* CreateMap() {
+        std::unique_ptr<Map<K, V>> CreateMap() {
             auto map = reinterpret_cast<Map<K, V>>(malloc(sizeof(Map<K, V>)));
 
             return map;
