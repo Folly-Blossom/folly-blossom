@@ -2,7 +2,6 @@
 #define FOLLY_BLOSSOM_PIXEL_HPP
 
 #include <cstdint>
-#include <utility>
 
 namespace Folly {
     struct RGBColor {
@@ -82,7 +81,9 @@ namespace Folly {
         };
 
         std::unique_ptr<HeapNode> CreateNode(T data, unsigned int frequency) {
-            std::unique_ptr<HeapNode> node = static_cast<HeapNode*>(malloc(sizeof(HeapNode)));
+            std::unique_ptr<HeapNode> node = new HeapNode;
+
+            node = malloc(static_cast<size_t>(sizeof(data)) + static_cast<size_t>(sizeof(HeapNode)));
 
             node -> leftChild = node -> rightChild = NULL;
 
