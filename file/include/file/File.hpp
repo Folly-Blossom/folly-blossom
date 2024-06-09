@@ -27,7 +27,8 @@ namespace Folly {
         String extention;
         FileType fileType;
         unsigned char permissions[2];
-    } Options;
+        State state;
+    } Options, FileStats, FileInfo;
 
     struct File {
         String fileName;
@@ -66,12 +67,12 @@ namespace Folly {
 
             return returnable.empty() ? State::EMPTY : State::FULL;
         }
-    }
 
-    State CheckFileStability(File *file) {
-        if (!file) return State::NON_EXISTENT;
+        State CheckFileStability(File *file) {
+            if (!file) return State::NON_EXISTENT;
 
-        return IsFileBlankBasedOnBuffer(file);
+            return IsFileBlankBasedOnBuffer(file);
+        }
     }
 }
 
