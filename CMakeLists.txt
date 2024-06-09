@@ -1,36 +1,29 @@
 cmake_minimum_required(VERSION 3.28)
 
-project(Folly_Blossom VERSION 1.0.0 LANGUAGES CXX)
+project(
+  Folly_Blossom
+  VERSION 1.0.0
+  LANGUAGES CXX)
 
 include(GNUInstallDircs)
-
-add_library(${PROJECT_NAME} INTERFACE)
 
 set(CMAKE_CXX_STANDARD 14)
 
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_14)
 
-target_include_directories(
-        ${PROJECT_NAME}
-        INTERFACE
-        $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
-)
+set(CMAKE_MODULE_PATH ${${PROJECT_NAME}_SOURCE_DIR}/CMake; ${CMAKE_MODULE_PATH})
 
-# Include Catch2 for tests.
+configure_file(config.h.in config.h)
 
-find_package(Catch2 REQUIRED)
+add_subdirectory(encryption)
+add_subdirectory(data)
+add_subdirectory(file)
 
-add_executable(Folly_Blossom_Test test/test.cpp)
+list(APPEND INCLUDE_DIRECTORIES encryption)
+list(APPEND INCLUDE_DIRECTORIES file)
+list(APPEND INCLUDE_DIRECTORIES data)
 
-target_link_libraries(Folly_Blossom_Test PRIVATE Catch2::Catch2)
+target_include_directories(${INCLUDE_DIRECTORIES}
+                           INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_include_directories(Folly_Blossom_Test PRIVATE ${PROJECT_SOURCE_DIR}/include)
-
-include(CTest)
-
-include(Catch)
-
-catch_discover_tests(Folly_Blossom_Test)
-
-enable_testing()
+target_link_libraries(${PROJECT_NAME} PUBLIC ${INCLUDE_DIRECTORIES})
